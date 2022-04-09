@@ -28,22 +28,32 @@
   color: #61dafb;
 }
 
+.textHead {
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+
 .btn {
-  padding: 0.875rem 1.25rem 0.5rem;
+
+  padding: 0.25rem 0.5rem;
   border: 0.125rem;
   letter-spacing: 0.063rem;
   text-transform: uppercase;
   text-align: center;
   justify-content: right;
+  color: rgb(240,0,0);
+  background-color: rgb(240,240,240);
 }
 
 .menuCardStyle {
-  margin-top: 0.5rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  margin-right: 1.5rem;
   background-color: rgb(255, 255, 255);
-  border-radius: 1.5rem;
   padding: 1.5rem;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  border-style: solid;
+  border-color: #282c34;
+  border-width: 2px;
 }
 
 * {
@@ -52,6 +62,9 @@
   box-sizing: border-box;
 }
 
+.clipCircle {
+  clip-path: circle(70px at center);
+}
 
 .wrapper {
   position: absolute;
@@ -94,6 +107,14 @@
   bottom: 18px;
   right: 18px;
   z-index: 1;
+}
+
+#container {
+  margin: 1rem;
+}
+
+.items {
+  margin-bottom: 1rem;
 }
 
 @keyframes frames {

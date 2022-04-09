@@ -1,12 +1,26 @@
 import React from 'react';
 import './App.css';
-import { useEffect, useState } from 'react';
-import { Container, Row, Col, Card, CardGroup, Button, Image } from 'react-bootstrap';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import {
+  useEffect,
+  useState
+} from 'react';
+import {
+  Container,
+  Row,
+  Col,
+  Card,
+  CardGroup,
+  Button,
+  Image
+} from 'react-bootstrap';
+import {
+  BrowserRouter as
+    Router,
+  Switch,
+  Route,
+  Link
+} from 'react-router-dom';
 import axios from 'axios';
-import MainRoutes from "./MainRoutes";
-import PokemonDetail from "./PokemonDetail";
-
 
 function Main() {
 
@@ -18,16 +32,17 @@ function Main() {
   const [isLoading, setIsLoading] = useState(false)
 
   function consumeAPI() {
-    axios.get("https://pokeapi.co/api/v2/pokemon?limit=898&offset=0")
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=21")
       .then((response) => {
         let data = response.data.results
 
         setPokemonArray(data)
+
         setIsLoading(true)
       })
   }
 
-  function searchPokemon(value) {
+  function goToPokePage(value) {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${value}`)
       .then((response) => {
       })
@@ -43,28 +58,57 @@ function Main() {
           </div>
         </div>
         :
-        <Container fluid>
-          <Row md={12}>
+        <Container>
+          <Row style={{ display: 'flex', justifyContent: 'center' }}>
+            <p className="textHead">
+              Pokédex
+            </p>
             {pokemonArray.map((item, index) => {
               return (
-                <Col key={index} md={3} className="menuCardStyle" style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
-                  <div key={index + 1}>
-                    <div key={index + 2}>
-                      <Image src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${index + 1}.png`} />
-                    </div>
-                    <h2 key={index + 3}>
+                <Col
+                  key={index}
+                  xs={12}
+                  md={3}
+                  className="menuCardStyle"
+                  style={{ display: 'flex', flexDirection: 'row' }}
+                >
+                  <Col key={index++}>
+                    <Col
+                      key={index++}
+                      style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        backgroundImage: 'linear-gradient(180deg, rgb(240,0,0) 50%, rgb(240,240,240) 50%)',
+                        borderRadius: '50rem'
+                      }}
+                    >
+                      <Image
+                        src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.url.split("/")[6]}.png`}
+                        style={{ width: '100%' }}
+                      />
+                    </Col>
+                    <h2
+                      key={index++}
+                      style={{ display: 'flex', justifyContent: 'center', textTransform: 'capitalize' }}
+                    >
                       {item.name}
                     </h2>
-                    <Link
-                      key={index + 4}
-                      to={`/pokemon-detail`}
-                      state={{ from: `${item.name}` }}
-                    >
-                      <button key={index + 5} style={{ padding: '1rem' }} onClick={() => searchPokemon(item.name)}>
-                        More info
-                      </button>
-                    </Link>
-                  </div>
+                    <div style={{ display: 'flex', justifyContent: 'center' }}>
+                      <Link
+                        key={index++}
+                        to={`/pokemon-detail`}
+                        state={{ from: `${item.name}` }}
+                      >
+                        <button
+                          key={index++}
+                          className="btn"
+                          onClick={() => goToPokePage(item.name)}
+                        >
+                          More info
+                        </button>
+                      </Link>
+                    </div>
+                  </Col>
                 </Col>
               )
             })
