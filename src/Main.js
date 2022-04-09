@@ -79,12 +79,12 @@ function Main() {
                         display: 'flex',
                         justifyContent: 'center',
                         backgroundImage: 'linear-gradient(180deg, rgb(240,0,0) 50%, rgb(240,240,240) 50%)',
-                        borderRadius: '50rem'
+                        borderRadius: '100rem'
                       }}
                     >
                       <Image
                         src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${item.url.split("/")[6]}.png`}
-                        style={{ width: '100%' }}
+                        style={{ width: '110%' }}
                       />
                     </Col>
                     <h2
