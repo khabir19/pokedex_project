@@ -16,12 +16,12 @@ function Main() {
   const [nextPage, setNextPage] = useState()
 
   function consumeAPI() {
-    axios.get("https://pokeapi.co/api/v2/pokemon")
+    axios.get("https://pokeapi.co/api/v2/pokemon?limit=8")
       .then((response) => {
         let data = response.data.results
         let previous = response.data.previous
         let next = response.data.next
-
+        
         setPokemonArray(data)
 
         setPreviousPage(previous)
@@ -39,8 +39,6 @@ function Main() {
 
         setPreviousPage(response.data.previous)
         setNextPage(response.data.next)
-
-        setIsLoading(true)
       })
   }
 
@@ -53,8 +51,6 @@ function Main() {
 
         setPreviousPage(response.data.previous)
         setNextPage(response.data.next)
-        
-        setIsLoading(true)
       })
   }
 

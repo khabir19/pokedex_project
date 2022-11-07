@@ -17,7 +17,6 @@ function PkmnDetail() {
     const [isLoading, setIsLoading] = useState(false)
     const [pkmnPage, setPkmnPage] = useState()
 
-    console.log(location)
     function getPkmnName() {
         axios.get(`https://pokeapi.co/api/v2/pokemon/${pkmnName}`)
             .then((response) => {
@@ -52,21 +51,28 @@ function PkmnDetail() {
                                     }
                                 </h1>
                             </Col>
-                            <Row style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center', marginLeft: '0.5rem' }}>
+                            <Row style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}>
                                 <Col xs={12} md={4}>
-                                    <Card className="cardDisplay" style={{ display: 'flex', flexDirection: 'row' }}>
+                                    <Card>
                                         <Card.Img
-                                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${pkmnPage.id}.gif`}
-                                            style={{ width: '50%', marginTop: '2rem', marginLeft: '5rem' }}
-                                        />
-                                        <Card.Img
-                                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/back/${pkmnPage.id}.gif`}
-                                            style={{ width: '50%', marginTop: '2rem', marginLeft: '5rem' }}
+                                            src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${pkmnPage.id}.png`}
+                                            style={{ width: '100%' }}
                                         />
                                     </Card>
+                                    <Link
+                                        to={`/`}
+                                    >
+                                        <div className="btn" style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+                                            <AiFillCaretLeft style={{ marginTop: '0.4rem' }}>
+                                            </AiFillCaretLeft>
+                                            <h6 style={{ marginTop: '0.4rem' }}>
+                                                Back
+                                            </h6>
+                                        </div>
+                                    </Link>
                                 </Col>
                                 <Col xs={12} md={4}>
-                                    <ListGroup style={{ marginTop: '2rem' }}>
+                                    <ListGroup >
                                         <ListGroup.Item>
                                             National Dex Nº {pkmnPage.id}
                                         </ListGroup.Item>
@@ -104,9 +110,7 @@ function PkmnDetail() {
                                             })}
                                         </ListGroup.Item>
                                     </ListGroup>
-                                </Col>
-                                <Col xs={12} md={4}>
-                                    <Table striped bordered hover size="sm">
+                                    <Table striped size="sm">
                                         <thead>
                                             <tr>
                                                 <th>Stats</th>
@@ -139,20 +143,12 @@ function PkmnDetail() {
                                         </tbody>
                                     </Table>
                                 </Col>
+                                <Col xs={12} md={4}>
+                                </Col>
                             </Row>
                         </Row>
                         <Col xs={12} md={2}>
-                            <Link
-                                to={`/`}
-                            >
-                                <div className="btn" style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
-                                    <AiFillCaretLeft style={{ marginTop: '0.4rem' }}>
-                                    </AiFillCaretLeft>
-                                    <h6 style={{ marginTop: '0.4rem' }}>
-                                        Back
-                                    </h6>
-                                </div>
-                            </Link>
+
                         </Col>
                     </Container>
                 </div>

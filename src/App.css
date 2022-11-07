@@ -53,12 +53,6 @@
   border-width: 1px;
 }
 
-.cardDisplay{
-  margin-top: 1rem;
-  display: flex;
-  justify-content: center;
-}
-
 .pagination a {
   border-radius: 5px;
 }
